@@ -23,10 +23,28 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+
+context gives an easy way to share global values among components, instead of passing down by props, which can get troublesome in a larger application.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+store is essentially the app state. If used properly, all necessary state should be handled by the store, so that state values don't stray across many components. It can't be mutated, which can cause issues.
+
+actions are predefined operations that can be called and run on the store. They have a type object which lets the app know what parts of state are changed with each action.
+
+reducers are functions which take a state and action and return (usually) a changed/modified state value. They seem to serve as a "single point of truth" like the store, where only actions that match what is defined in the reducer can take effect.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+app state is the overall state of the entire app, and is usually global state. component state is usually local to a component and without being passed to other components as props, remains contained in the original component due to its scope.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+It's a middleware that returns functions instead of action objects. The function uses the store dispatch and coordinates sync/async operations.
+
 - [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+context. It seems to be very explicit, and I like explicit code styles. "This data is needed by these components, so wrap them in a Provider, and use a Consumer in each component that needs to use the data." That to me seems much easier and straightforward than passing props down entire chains of components. What happens if your state needs change? Now you have to change every prop in the tree passing it down, etc. Also, it means you KNOW if your state is changing unexpectedly, you just have to look wherever your Provider is providing the state and/or where it is Consumed, not potentially the entire app.
 
 ## Project Set Up
 

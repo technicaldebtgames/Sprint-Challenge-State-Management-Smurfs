@@ -1,16 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, useState } from 'react';
+import axios from 'axios';
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
-  }
+
+const initialSmurfs = [];
+
+function App() {
+
+  let [smurfs] = useState(initialSmurfs);
+
+  return (
+    <div className='App'>
+      <h1>SMURFS! 2.0 W/ Redux (well... context, at least)</h1>
+      <div>Below are the smurfs. You can add to them if you like.</div>
+
+      
+
+    </div>
+  );
+
 }
 
 export default App;
